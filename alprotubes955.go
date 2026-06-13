@@ -147,6 +147,21 @@ func insertionSortNamaAscending(data *DataKandidat) {
 	}
 }
 
+func insertionSortNoUrutAscending(data *DataKandidat) {
+	var i, j int
+	var temp Kandidat
+
+	for i = 1; i < data.n; i++ {
+		temp = data.data[i]
+		j = i
+		for j > 0 && temp.noUrut < data.data[j-1].noUrut {
+			data.data[j] = data.data[j-1]
+			j--
+		}
+		data.data[j] = temp
+	}
+}
+
 func selectionSortSuaraDescending(data *DataKandidat) {
 	var i, j, maxIdx int
 	var temp Kandidat
@@ -372,18 +387,22 @@ func votingKandidat(data *DataKandidat, pesan string) {
 // TAMPILKAN DATA
 func tampilkanKandidat(data DataKandidat, judul string) {
 	var i int
-
+	var temp DataKandidat
+	
+	temp = data
 	fmt.Println(judul)
+	insertionSortNoUrutAscending(&temp)
 	if data.n == 0 {
 		fmt.Println(">> Belum ada kandidat.")
 	} else {
 		tampilkanHeaderKandidat("No | No Urut | Nama Kandidat        | Prodi                     | Angkatan   ")
 		for i = 0; i < data.n; i++ {
-			fmt.Printf("%-2d | %-7d | %-20s | %-25s | %-10d \n", i+1, data.data[i].noUrut, data.data[i].nama, data.data[i].prodi, data.data[i].angkatan)
+			fmt.Printf("%-2d | %-7d | %-20s | %-25s | %-10d \n", i+1, temp.data[i].noUrut, temp.data[i].nama, temp.data[i].prodi, temp.data[i].angkatan)
 		}
 		garisBawah("==========================================================================================================")
 	}
 }
+
 
 func cariDetailKandidat(data *DataKandidat, pesan string) {
 	var nama string
