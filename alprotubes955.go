@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const NMAX int = 20
+const NMAX int = 50
 const ADMIN_USERNAME string = "admin"
 const ADMIN_PASSWORD string = "12345"
 
