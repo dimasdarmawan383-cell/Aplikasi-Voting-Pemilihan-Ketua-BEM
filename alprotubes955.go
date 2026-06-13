@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const NMAX int = 50
+const NMAX int = 20
 const ADMIN_USERNAME string = "admin"
 const ADMIN_PASSWORD string = "12345"
 
@@ -132,14 +132,14 @@ func binarySearchNama(data DataKandidat, nama string) int {
 }
 
 // SORTING
-func insertionSortNoUrutAscending(data *DataKandidat) {
+func insertionSortNamaAscending(data *DataKandidat) {
 	var i, j int
 	var temp Kandidat
 
 	for i = 1; i < data.n; i++ {
 		temp = data.data[i]
 		j = i
-		for j > 0 && temp.noUrut < data.data[j-1].noUrut {
+		for j > 0 && temp.nama < data.data[j-1].nama {
 			data.data[j] = data.data[j-1]
 			j--
 		}
@@ -392,7 +392,7 @@ func cariDetailKandidat(data *DataKandidat, pesan string) {
 	if data.n == 0 {
 		fmt.Println(">> Belum ada kandidat.")
 	} else {
-		insertionSortNoUrutAscending(data)
+		insertionSortNamaAscending(data)
 
 		fmt.Println("Gunakan underscore (_) jika nama mengandung spasi")
 
@@ -407,7 +407,7 @@ func cariDetailKandidat(data *DataKandidat, pesan string) {
 
 			garisBawah("==========================================================================================================")
 
-			fmt.Println("Nama Kandidat :", data.data[idx].nama)
+			fmt.Println("Nama Kandidat  :", data.data[idx].nama)
 			fmt.Println("No Urut        :", data.data[idx].noUrut)
 			fmt.Println("Program Studi  :", data.data[idx].prodi)
 			fmt.Println("Fakultas       :", data.data[idx].fakultas)
