@@ -289,8 +289,11 @@ func tambahKandidat(data *DataKandidat, config Konfigurasi, pesan string) {
 func hapusKandidat(data *DataKandidat, pesan string) {
 	var nama string
 	var idx, i int
-
+	var temp DataKandidat
+	
+	temp = data
 	fmt.Println(pesan)
+	insertionSortNoUrutAscending(&temp)
 
 	fmt.Print("Masukkan nama kandidat yang dihapus : ")
 	fmt.Scan(&nama)
@@ -960,7 +963,7 @@ func main() {
 			angkatan: 2023,
 			suara:    0,
 		}
-
+		
 		data.data[1] = Kandidat{
 			noUrut:   2,
 			nama:     "Sasuke_Uchiha",
