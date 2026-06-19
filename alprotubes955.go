@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const NMAX int = 20
+const NMAX int = 10
 const ADMIN_USERNAME string = "admin"
 const ADMIN_PASSWORD string = "12345"
 
@@ -234,7 +234,7 @@ func tambahKandidat(data *DataKandidat, config Konfigurasi, pesan string) {
 		fmt.Print("Masukkan jumlah kandidat : ")
 		fmt.Scan(&jumlah)
 
-		if jumlah < 1 || jumlah > 10 {
+		if jumlah < 1 || jumlah > 10 - data.n {
 
 			fmt.Println(">> Jumlah kandidat maksimal 10.")
 
